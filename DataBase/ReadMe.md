@@ -1,0 +1,1 @@
+This folder contains info about DB such as DB SCHEMA, ..etc
