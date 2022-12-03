@@ -35,16 +35,40 @@ class place_order(object):
         self.ord_detail_id = None
         self.ord_id = None
         self.ord_date = None
-        self.brn_id = None
-        self.emp_id = None
-        self.cust_id = None
+        self.brn_id = self.get_brn_id()
+        self.emp_id = self.get_emp_id()
+        self.cust_id = self.get_cust_id()
         pass
 
-    def get_emp_brn_cust_details(self):
-        return emp_id,brn_id,cust_id
+    def get_emp_id(self):
+        pass
+        return emp_id
 
+    def get_brn_id(self):
+        pass
+        return brn_id
+
+    def get_cust_id(self):
+        pass
+        return cust_id
+
+    def add_products_to_basket(self):
+        pass
+
+        return []
+
+class add_items_to_basket(object):
+    def __init__(self):
+        self.products = None
+        self.qty = None
+        self.amount = None
+
+    def add_products_to_basket(self):
+        self.products =
+        pass
 
 #place an order
 po = place_order()
+po.add_products_to_basket()
 
 
