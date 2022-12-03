@@ -1,3 +1,16 @@
+class employee_authentication(object):
+    def __init__(self):
+        self.authentication = False
+        self.branch_name = None
+        self.emp_id = None
+
+    def login(self,username, password):
+        # match username nad password from database and get branch and employee id from db
+        # after verification get and set the emp id and branch id
+        self.authentication = True
+        self.branch_name = "brn_001"
+        self.emp_id = "emp_001"
+
 class products(object):
     def __init__(self):
         self.prd_name
@@ -79,6 +92,7 @@ class add_items_to_basket(object):
         self.product_qty_amount
 
 
-#place an order
-po = place_order()
-po.add_products_to_basket()
+if __name__=="__main__":
+    # Authentication
+
+    pass
