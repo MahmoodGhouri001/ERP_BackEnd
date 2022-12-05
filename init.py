@@ -42,10 +42,20 @@ class employee(object):
 
 class branch(object):
     def __init__(self):
-        pass
-    def add_branch(self):
-        pass
-    def remove_brach(self):
+        self.brn_name = None
+        self.brn_city = None
+        self.brn_state = None
+        self.brn_country = None
+        self.brn_status = None
+
+    def add_branch(self,branch_name,branch_city,branch_state,branch_country):
+        self.brn_name = branch_name
+        self.brn_city = branch_city
+        self.brn_state = branch_state
+        self.brn_country = branch_country
+        self.brn_status = "Inactive"
+
+    def Activate_brach(self,):
         pass
 
 class orders(object):
