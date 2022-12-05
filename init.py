@@ -13,23 +13,26 @@ class employee_authentication(object):
 
 class products(object):
     def __init__(self):
-        self.prd_name
-        prd_desc
-        prd_least_margin
-        prd_mrp
-        prd_sale_price
-        prd_gst_per
+        self.prd_name = None
+        self.prd_desc = None
+        self.prd_least_margin = None
+        self.prd_mrp = None
+        self.prd_sale_price = None
+        self.prd_gst_per = None
 
     def add_product(self,prd_name,prd_desc,prd_least_margin,prd_mrp,prd_sale_price,prd_gst_per):
         # add product to database
         return "Product added"
 
     def add_product_availability(self,batch_id,prd_id,brn_id,prd_added_date,prd_exp_date,prd_qty):
-        # add product
+        # add product availability to already available product
         return "Added product quantity"
 
     def view_all_products(self):
-        pass
+        # Write a logic for viewing all products
+        return list()
+    def search_product(self):
+        # write a logic if product search made and return list of search product.
         return list()
 
 class employee(object):
