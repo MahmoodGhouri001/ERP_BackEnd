@@ -1,15 +1,18 @@
+import uuid
 class employee_authentication(object):
     def __init__(self):
         self.authentication = False
         self.branch_name = None
         self.emp_id = None
 
+
     def login(self,username, password):
         # match username nad password from database and get branch and employee id from db
         # after verification get and set the emp id and branch id
-        self.authentication = True
-        self.branch_name = "brn_001"
-        self.emp_id = "emp_001"
+        if True:
+            self.authentication = True
+            self.branch_name = "brn_001"
+            self.emp_id = "emp_001"
 
 class products(object):
     def __init__(self):
@@ -37,28 +40,60 @@ class products(object):
 
 class employee(object):
     def __init__(self):
-        pass
-    def add_employee(self):
+        self.emp_id = None
+        self.brn_id = None
+        self.emp_name = None
+        self.emp_password = None
+        self.emp_dob = None
+        self.emp_phone = None
+        self.emp_email = None
+        self.emp_doj = None
+        self.emp_pic = None
+        self.emp_dept = None
+        self.business_unit = None
+        self.emp_status = None
+    def add_employee(self,emp_id,brn_id,emp_name,emp_password,emp_dob,emp_phone,emp_email,emp_doj,emp_pic,emp_dept,business_unit,emp_status):
         pass
     def remove_employee(self):
         pass
 
+def create_db_connection():
+    try:
+        import pymysql
+        connection = pymysql.connect(host='localhost',user='root',password='admin',database='record')
+        cursor = connection.cursor()
+        if connection:
+            return connection,cursor
+        else:
+            print("Connection failed")
+    except Exception as e:
+        print("Exception while creating connection with DB",e)
 class branch(object):
     def __init__(self):
         self.brn_name = None
         self.brn_city = None
         self.brn_state = None
         self.brn_country = None
-        self.brn_status = None
+        self.brn_status = 'Inactive'
 
-    def add_branch(self,branch_name,branch_city,branch_state,branch_country):
-        self.brn_name = branch_name
-        self.brn_city = branch_city
-        self.brn_state = branch_state
-        self.brn_country = branch_country
-        self.brn_status = "Inactive"
+    def add_branch(self,request_data):
 
-    def Activate_brach(self,):
+        self.brn_name = request_data['branch_name']
+        self.brn_city = request_data['branch_city']
+        self.brn_state = request_data['branch_state']
+        self.brn_country = request_data['branch_country']
+
+        connection, cursor = create_db_connection()
+        id = uuid.uuid4()
+        sql_query = "insert into branch_details values(NULL,'{}','{}','{}','{}','INACTIVE');".format(self.brn_name,self.brn_city,self.brn_state,self.brn_country)
+        cursor.execute(sql_query)
+        connection.commit()
+
+        return id
+
+    def activate_brach(self):
+        pass
+    def deactivate_branch(self):
         pass
 
 class orders(object):

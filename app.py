@@ -3,10 +3,9 @@ import json
 import pymysql
 import pandas as pd
 import uuid
-from flask_cors import CORS
 
 app = Flask(__name__)
-CORS(app)
+
 
 @app.route('/health_check', methods=['GET','POST'])
 def health_check():
@@ -50,20 +49,15 @@ def get_records():
 
     return json.dumps(final_list)
 
-@app.route('/add_record',methods = ['POST'])
+from init import branch
+@app.route('/add_branch',methods = ['POST'])
 def insert_record():
     if request.method == 'POST':
         request_data = request.get_json()
-        title = request_data['notes_title']
-        desc = request_data['notes_desc']
-        notes_id = uuid.uuid4()
-        connection,cursor = create_db_connection()
-        sql_query ="INSERT INTO `notes` VALUES ('{}', '{}', '{}')".format(notes_id,title,desc,)
-        cursor.execute(sql_query)
-        # the connection is not autocommited by default. So we must commit to save our changes.
-        connection.commit()
+        brn = branch()
+        branch_id = brn.add_branch(request_data)
 
-        return ("successfully inserted!",200)
+        return ("successfully branch created with branch id : {}".format(branch_id),200)
     else:
         return 'request method is other than post'
 
