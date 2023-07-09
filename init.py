@@ -1,4 +1,11 @@
 import uuid
+from flask import Flask
+from flask_restful import Resource, Api, abort
+
+
+app = Flask(__name__)
+api = Api(app)
+
 class employee_authentication(object):
     def __init__(self):
         self.authentication = False
@@ -68,7 +75,7 @@ def create_db_connection():
             print("Connection failed")
     except Exception as e:
         print("Exception while creating connection with DB",e)
-class branch(object):
+class branch(resource):
     def __init__(self):
         self.brn_name = None
         self.brn_city = None
@@ -139,6 +146,8 @@ class add_items_to_basket(object):
     def add_products_to_basket(self):
         self.product_qty_amount
 
+
+api.add_resource(branch,"/branch/")
 
 if __name__=="__main__":
     # Authentication
