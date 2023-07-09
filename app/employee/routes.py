@@ -1,13 +1,13 @@
 from flask import Blueprint, request, jsonify
-from .models import db, Users
+from .models import db, Employee
 from flask_jwt_extended import JWTManager, jwt_required, create_access_token
 from app.schemas.user import user_schema, users_schema
 
-auth_bp = Blueprint('auth', __name__)
+employee_bp = Blueprint('employee', __name__)
 
 # Define routes for authentication
-@auth_bp.route('/api/users', methods=['POST'])
-def create_user():
+@employee_bp.route('/api/employee', methods=['POST'])
+def create_employee():
     username = request.json['username']
     password = request.json['password']
 

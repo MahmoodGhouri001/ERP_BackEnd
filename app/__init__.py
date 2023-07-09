@@ -18,6 +18,10 @@ jwt = JWTManager(app)
 # Register blueprints
 from app.auth.routes import auth_bp
 from app.branch.routes import branches_bp
+from app.products.routes import products_bp
+from app.employee.routes import employee_bp
 
 app.register_blueprint(auth_bp)
 app.register_blueprint(branches_bp)
+app.register_blueprint(employee_bp)
+app.register_blueprint(products_bp)
